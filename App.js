@@ -1,79 +1,62 @@
 import React from 'react';
-import { Image, StyleSheet, View, Text } from 'react-native';
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Image
-          source={require('./assets/logo-vert.png')}
-          style={styles.logo}
-          resizeMode="contain"
-        />
-        <View style={styles.schoolNameContainer}>
-          <Text style={styles.schoolName}>Student Card App</Text>
-          
-          <Text style={styles.schoolName}>EMSI CENTRE</Text>
-        </View>
-      </View>
-
-      <View style={styles.info}>
-        <Text style={styles.label}>
-          Nom : <Text style={styles.value}>HABBACHI</Text>
-        </Text>
-        <Text style={styles.label}>
-          Prénom : <Text style={styles.value}>Yazid</Text>
-        </Text>
-        <Text style={styles.label}>
-          Année universitaire : <Text style={styles.value}>2025 / 2026</Text>
-        </Text>
-      </View>
-    </View>
-  );
+import { View, Text, Image, TextInput, Button, ScrollView, StyleSheet, Alert
+} from 'react-native';
+export default function ProfilStatique() {
+return (
+<ScrollView contentContainerStyle={styles.container}>
+<Image
+source={{ uri: 'https://i.pinimg.com/236x/23/ac/95/23ac958df044398e4996bd6f29dc1db6.jpg' }}
+style={styles.avatar}
+/>
+<Text style={styles.title}>Profil utilisateur</Text>
+<Text style={styles.label}>Nom :</Text>
+<TextInput
+style={styles.input}
+placeholder="Nom modifiable"
+editable={true}
+/>
+<Text style={styles.label}>Message :</Text>
+<Text style={styles.message}>Bonjour 👋</Text>
+<Button title="Afficher une alerte" onPress={() => {
+  Alert.alert('Bonjour !', 'Vous avez appuyé sur le bouton');
+}} />
+</ScrollView>
+);
 }
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f6f7fb',
-    gap: 20, 
-  },
+container: {
+padding: 20,
 
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    width: '90%',
-  },
-
-  logo: {
-    width: 100,
-    height: 100,
-  },
-
-  schoolName: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#1f2937',
-    letterSpacing: 1,
-  },
-
-  info: {
-    alignItems: 'flex-start',
-    gap: 8,
-  },
-  label: {
-    fontSize: 16,
-    color: '#1d1923ff',
-    fontWeight: '500',
-  },
-  value: {
-    fontSize: 17,
-    color: '#3969d0ff',
-    fontWeight: 'bold',
-  },
-  
-  
+alignItems: 'center',
+},
+avatar: {
+width: 150,
+height: 150,
+borderRadius: 75,
+marginBottom: 20,
+},
+title: {
+fontSize: 22,
+fontWeight: 'bold',
+marginBottom: 20,
+},
+label: {
+alignSelf: 'flex-start',
+fontSize: 16,
+marginBottom: 5,
+},
+input: {
+width: '100%',
+borderWidth: 1,
+borderColor: '#ccc',
+padding: 10,
+marginBottom: 20,
+borderRadius: 5,
+backgroundColor: '#eee',
+},
+message: {
+fontSize: 18,
+color: 'gray',
+marginBottom: 20,
+},
 });
